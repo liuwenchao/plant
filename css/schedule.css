@@ -1,0 +1,127 @@
+.main_top {
+	font-size: 18px;
+	font-weight: bold;
+	color: #86c111;
+	background: url(../img/plant_schedule_b_h1.jpg) no-repeat;
+	background-position: left;
+	height: 70px;
+	padding-left: 38px;
+	padding-top: 2px;
+	margin-left:10px;
+	
+}
+.main_top .h1{
+	float:left;
+	height: 35px;
+	width: 200px;
+	line-height:35px;
+	margin-top:10px;
+	margin-left: 50px;
+}
+
+
+
+
+.tableStyle {
+	border: thin solid #999;
+	width: 100%;
+	color: #000;
+}
+.tableStyle td {
+	border-bottom:thin solid #666;
+	height: 30px;
+}
+.tableStyle .trStyle{
+	cursor: pointer;
+}
+.tableStyle .trChecked{
+	background-color: #F90;
+	cursor: pointer;
+}
+.tableStyle .trStyle:hover{
+	background-color:#eee;
+}
+
+
+
+.modelpan_head{
+	width: 100%;
+	margin: auto;
+}
+.modelpan {
+	height: 358px;
+	width: 100%;
+	margin: auto;
+	overflow:auto;
+	border-bottom: thin solid gray;
+}
+
+
+
+.searchPan{
+	float: left;
+	height: 35px;
+	width: 55%;
+	margin: auto;
+	margin-top:5px;
+	border: #9C0 solid thin;
+	padding-left:20px;
+	padding-top:10px;
+	background-color: #F8F8F8;
+	border-radius:4px;
+}
+.pagePan {
+	float: left;
+	height: 35px;
+	width: 40%;
+	margin-top: 5px;
+	overflow:hidden;
+	
+}
+
+.scheduleDetail{
+	position:absolute;
+	padding:20px;
+	margin:auto;
+	background-color:#F7F7F7;
+	border:#393 solid thin;
+	border-radius:4px;
+	color:black;
+	display: none;
+	width: 500px;
+	height: 420px;
+}
+.taskDetail{
+		width:500px; 
+		height:180px;
+		overflow: auto;
+}
+.selected{
+	background-color: #F90;
+}
+/* 按钮clean gray
+*******************************************************************************/
+.buttonBlue {
+	display: block;
+	padding: 5px;
+	color: #fff;
+	cursor: pointer;
+	background: #7fb813;
+	width: 90px;
+	height:35px;
+	border: thin solid #666;
+	font-size: 12px;
+	font-weight: bold;
+	position: relative;
+}
+
+.buttonBlue:hover { background-color: #4b9103; }
+.buttonBlue:disabled{
+	background-color:#CCC;
+}
+.buttonBlue[class] {  background-image: url(../img/shade.png); background-position: bottom; }
+
+.smallButtonBlue {
+	width: 60px;
+	height:25px;
+}

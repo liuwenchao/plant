@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Login</title>
+<link rel="stylesheet" href="./css/login.css" />
+<link rel="stylesheet" href="./css/themes/base/jquery.ui.all.css"/>
+<script type="text/javascript" src="./js/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="./js/login.js"></script>
+<script type="text/javascript" src="./js/ui/jquery.ui.core.js"></script>
+<script type="text/javascript" src="./js/ui/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="./js/ui/jquery.ui.mouse.js"></script>
+<script type="text/javascript" src="./js/ui/jquery.ui.dialog.js"></script>
+<script type="text/javascript" src="./js/ui/jquery.ui.draggable.js"></script>
+<script type="text/javascript" src="./js/ui/jquery.ui.position.js"></script>
+<script type="text/javascript" src="./js/ui/jquery.ui.button.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		initComp();
+	});
+
+</script>
+</head>
+
+<body>
+
+<div id="dialog-form" title="Login">
+<p id="validateTips">Username and password please.</p>
+	<form>
+	<fieldset>
+		<label for="name">Username:</label>
+		<input type="text" name="username" id="username" value="admin" class="text ui-widget-content ui-corner-all" />
+		<label for="password">Password:</label>
+		<input type="password" name="password" id="password" value="" onkeypress="keyPressed(event);" class="text ui-widget-content ui-corner-all" />
+	</fieldset>
+	<div style="width:98%; text-align:right;"><a href="#" onclick="modifyPwd();" >Change password</a></div>
+
+	
+
+</form>
+</div>
+
+<div id="dialog-modify" title="Change password" style="display:none;">
+<p id="ModivalidateTips">Please input username and password</p>
+	<form>
+	<fieldset>
+		<label for="name">Username:</label>
+		<input type="text" name="oldusername" id="oldusername" value="" class="text ui-widget-content ui-corner-all" />
+		<label for="password">Old password:</label>
+		<input type="password" name="oldpassword" id="oldpassword" value="" class="text ui-widget-content ui-corner-all" />
+		<label for="password">New password:</label>
+		<input type="password" name="newpassword1" id="newpassword1" value="" class="text ui-widget-content ui-corner-all" />
+		<label for="password">Confirm new password:</label>
+		<input type="password" name="newpassword2" id="newpassword2" value="" class="text ui-widget-content ui-corner-all" />
+	</fieldset>
+</form>
+</div>
+
+</body>
+</html>

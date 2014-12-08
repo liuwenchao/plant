@@ -1,0 +1,43 @@
+.main_top {
+	font-size: 18px;
+	font-weight: bold;
+	color: #86c111;
+	background: url(../img/plant_manu_h1.jpg) no-repeat;
+	background-position: left;
+	height: 70px;
+	padding-left: 38px;
+	padding-top: 2px;
+	margin-left:10px;
+	
+}
+.main_top .h1{
+	float:left;
+	height: 35px;
+	width: 200px;
+	line-height:35px;
+	margin-top:15px;
+	margin-left: 30px;
+}
+
+.modelpan_head {
+	width: 95%;
+	margin: auto;
+}
+.modelpan {
+	height: 350px;
+	width: 95%;
+	margin: auto;
+	overflow:auto;
+	border-bottom:#CCC thin solid;
+}
+.monitorPan {
+	height: 60px;
+	width: 88%;
+	margin: auto;
+	margin-top:10px;
+	overflow:auto;
+	border: #9C0 solid thin;
+	padding-left:10px;
+	background-color: #F8F8F8;
+	border-radius:4px;
+}

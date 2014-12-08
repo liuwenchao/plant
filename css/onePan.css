@@ -1,0 +1,23 @@
+
+#plant_right_pan {
+	float: right;
+	width: 900px;
+	height:600px;
+	background:#FFF;
+		border: #9F3 thin solid;
+	border-radius:3px;
+}
+
+#plant_right_mid {
+	width: 100%;
+	color: #666666;
+	margin:auto;
+
+}
+
+
+ .tableContent{
+	width:95%;
+	margin:auto;
+		
+}

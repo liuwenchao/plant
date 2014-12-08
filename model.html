@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plant lighting control system - Model</title>
+<link rel="stylesheet" href="./css/themes/base/jquery.ui.all.css">
+<link rel="stylesheet" href="./css/bootstrap.min.css" />
+<script src="./js/jquery-1.9.1.js"></script>
+<script src="./js/mboat.js"></script>
+<script src="./js/model.js"></script>
+<script src="./js/ui/jquery.ui.core.js"></script>
+<script src="./js/ui/jquery.ui.widget.js"></script>
+<script src="./js/ui/jquery.ui.mouse.js"></script>
+<script src="./js/ui/jquery.ui.slider.js"></script>
+<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+
+<script type = "text/javascript">
+var photoRED = 0;//光量子——红
+var photoBLUE = 0;//光量子-蓝
+
+$(document).ready(function(){ 
+  $(function() {
+    initSubMenu();
+    getPhoto_KrKb();
+    getModelList();
+    initSlider();
+    getServerName();
+  });
+}); 
+
+</script>
+</head>
+<body>
+<div id="plant_container">
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="" href="#">
+        <img alt="Plant lighting control system" style="height:50px;" src="./img/logo.gif">
+      </a>
+      </div>
+      <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+          Settings 
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="node.html">Node setting</a></li>
+          <li><a href="area.html">Area setting</a></li>
+          <li><a href="model.html">Model setting</a></li>
+          <li><a href="logQuery.html">Log query</a></li>
+          <li><a href="reproduction.html">Demo model</a></li>
+          <li><a href="system.html">System</a></li>
+        </ul>
+        </li>
+        <li><a href="manu.html">Manual</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="index.html">Tasks</a></li>
+        <li><a href="#" class="btn btn-link" onclick="aboutMe();">About</a></li>
+        <li><button type="button" class="btn btn-default navbar-btn" onclick="logout();">Quit</button></li>
+      </ul>
+      <form class="navbar-form navbar-left">
+        <a id="lblServerName" class="btn btn-link text-muted" title="Click to change" onclick="modiServerName()">
+        Server ID
+        </a>
+        <input id="serverName" class="form-control" type="text" value="Server ID" style="display:none" onblur="saveServerName();"/>
+      </form>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3" id="plant_left_column">
+        <h3>Models List</h3>
+        <div id="MODELLIST"></div>
+      </div>
+      <div class="col-sm-9 well form-horizontal" id="plant_right_column">
+        <input id="modelId" name="modelId" type="hidden" value="-1"/>
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">Model name:</label>
+          <div class="col-sm-10">
+            <input type="text" name="modelName" id="modelName" maxlength="6" class="form-control" placeholder="maxlength:6">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">PPFD-RED (μmol/s/m&sup2;):</label>
+          <div class="col-sm-10">
+            <input id="ppfdRed" name="ppfdRed" type="text" maxlength="3" class="col-sm-1" value="0" onblur="PPFD_modi(0,this);" >
+            <div id="percentRed" style="background:red;" class="col-sm-6 col-sm-offset-1"></div>
+            <div class="col-sm-4">
+              <label id="red_value">0</label>%
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">PPFD-BLUE (μmol/s/m&sup2;):</label>
+          <div class="col-sm-10">
+            <input id="ppfdBlue" name="ppfdBlue" type="text" maxlength="3" class="col-sm-1" value="0" onblur="PPFD_modi(1,this);" >
+            <div id="percentBlue" style="background:#09c;" class="col-sm-6 col-sm-offset-1"></div>
+            <div class="col-sm-4">
+              <label id="blue_value">0</label>%
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">PPFD-UV (μmol/s/m&sup2;):</label>
+          <div class="col-sm-10">
+            <input id="ppfdUV" name="ppfdUV" type="text" maxlength="3" class="col-sm-1" value="0" onblur="PPFD_modi(2,this);" >
+            <div id="percentUV" style="background:violet;" class="col-sm-6 col-sm-offset-1"></div>
+            <div class="col-sm-4">
+              <label id="uv_value">0</label>%
+            </div>
+            <div class="clearfix"></div>
+            <span class="help-block">Notes：These values are real PPFD which are measured from this area.</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">FREQ(HZ):</label>
+          <div class="col-sm-10">
+            <input id="frequency" name="frequency" type="text" maxlength="4" class="form-control" value="160" onblur="checkFreq(this);">
+            <span class="help-block">A multiple of 32</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">Duty cycle(%):</label>
+          <div class="col-sm-10">
+            <select id="dutyRate" class="form-control">
+              <option value="0">0</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="30">30</option>
+              <option value="40">40</option>
+              <option value="50" selected="selected">50</option>
+              <option value="60">60</option>
+              <option value="70">70</option>
+              <option value="80">80</option>
+              <option value="90">90</option>
+              <option value="100">100</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">White light(%):</label>
+          <div class="col-sm-10">
+            <select id="brightness" class="form-control">
+              <option value="0" selected="selected" > 0</option>
+              <option value="10" > 10</option>
+              <option value="20" >20</option>
+              <option value="30" >30</option>
+              <option value="40" >40</option>
+              <option value="50" >50</option>
+              <option value="60" > 60</option>
+              <option value="70" >70</option>
+              <option value="80" >80</option>
+              <option value="90" >90</option>
+              <option value="100"> 100</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">Global PPFD-Red:</label>
+          <div class="col-sm-10">
+            <input type="text" name="photonRed" id="photonRed" value="50" class="form-control" style="width:50px; background-color:red;color:white;" onblur="PPFD_modi(0,this);" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">Global PPFD-Blue:</label>
+          <div class="col-sm-10">
+            <input type="text" name="photonBlue" id="photonBlue" value="50" class="form-control" style="width:50px; background-color:#09C;;color:white;" onblur="PPFD_modi(1,this);" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">Global PPFD-UV:</label>
+          <div class="col-sm-10">
+            <input type="text" name="photonUV" id="photonUV" value="50" class="form-control" style="width:50px; background-color:violet;color:white;" onblur="PPFD_modi(2,this);" />
+            <span class="help-block">Notes：These values are real PPFD of LED tube.</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class=" col-sm-offset-2">
+            <button class="btn btn-default" onClick="newModel();">New model</button>
+            <button class="btn btn-default" onClick="saveModel(this);">Save model</button>
+            <button class="btn btn-default" onClick="deleteModel();">Delete model</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

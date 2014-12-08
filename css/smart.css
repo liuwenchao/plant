@@ -1,0 +1,103 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* CSS Document */
+body {
+	margin: 0;
+	padding:0;
+	font-family: Arial,  SimHei,STHeiti;;
+	font-size: 14px;
+	line-height: 1.5em;
+	width: 100%;
+	display: table;
+}
+div, p, h1, h2, h3, img {
+	padding:0px;
+	margin:0px;
+}
+ul {
+	list-style-type:none;
+}
+li {
+	list-style-type:none;
+	float:left;
+}
+#pagePan {
+	width:1020px;
+	height:700px;
+	position:relative;
+	margin:0 auto;
+	padding:0;
+}
+/* TOP PANEL */
+#topPan {
+	width:1000px;
+	height:70px;
+	position:relative;
+	margin:0 auto;
+	padding:0;
+	background: url(../img/head.png);
+
+}
+#topPan .title{
+	float: left;
+	width: 200px;
+	font-size: 22px;
+	font-weight: bold;
+	margin-top: 6px;
+	margin-left:10px;
+	height: 50px;
+	padding-top: 20px;
+	padding-left: 75px;
+	color:white;
+	background: url(../img/templatemo_logo.png) no-repeat;
+}
+
+/* Menu Panel */
+#topPan .topMenuPan {
+	display:block;
+	float:right;
+	padding:0;
+	margin-top:10px;
+	margin-right:5px;
+	overflow:hidden;
+	background: #EEE;
+	border-radius: 4px/*{cornerRadius}*/;
+	
+}
+#topPan .topMenuPan .topMenuItem {
+	width:120px;
+	height:55px;
+	display:block;
+	float:left;
+	font-size:15px;
+	font-weight:bold;
+	color:#333;
+	text-decoration:none;
+	cursor:pointer;
+	border-right-style: solid;
+	border-right-color: #333;
+	border-right-width: thin;
+	line-height:55px;
+}
+#topPan .topMenuPan .topMenuItem img{
+	border:none;
+	float:left;
+}
+
+#topPan .topMenuPan .topMenuItem:hover {
+	background:#8ee814;
+}
+
+#divBody {
+	width:1000px;
+	height:600px;
+	position:relative;
+	padding:0;
+	margin-top: 0;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+	visibility: visible;
+}
+/* /TOP PANEL */

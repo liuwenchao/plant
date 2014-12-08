@@ -1,0 +1,109 @@
+.main_top {
+	font-size: 18px;
+	font-weight: bold;
+	color: #86c111;
+	background: url(../img/plant_schedule_h1.jpg) no-repeat;
+	background-position: left;
+	height: 70px;
+	padding-left: 38px;
+	padding-top: 2px;
+	margin-left:10px;
+	
+}
+
+.main_top .h1{
+	float:left;
+	height: 35px;
+	width: 200px;
+	line-height:25px;
+	margin-top:20px;
+	margin-left: 35px;
+}
+.srcModelpan {
+
+	width: 64%;
+	float: left;
+	margin: 0 0 0 3px;
+}
+.modelListPan_head{
+	width: 100%;
+}
+.modelListPan{
+	height: 330px;
+	width: 100%;
+	overflow:auto;
+	
+}
+
+.distModelPan {
+	width: 34%;
+	float: right;
+	margin-right: 3px;
+}
+
+.modelArea{
+	border-bottom:#999 thin solid;
+	width:100%;
+	height:375px;
+}
+
+.timePan {
+	width: 99%;
+	font-size: 12px;
+	margin: auto;
+	margin-bottom:10px;
+	border: #9C0 solid thin;
+	border-radius:4px;
+	padding-left:5px;
+}
+
+.modelSelect{
+	width:25px;
+	height:20px;
+	border:#689C04 solid thin;
+	cursor:pointer;
+	line-height: 17px;
+	font-size: 20px;
+		font-family: Times, 'Times New Roman', Georgia, Palatino; /* ATTN: need a better font stack */
+	font-weight: bold;
+	border-radius:2px;
+	
+}
+.modelSelect:hover, .modelDelete:hover {
+	border-color: red;
+}
+
+
+
+.modelDelete{
+	width:25px;
+	height:20px;
+	border:#689C04 solid thin;
+	cursor:pointer;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 20px;
+	border-radius:2px;
+	background: #F3F3F3; /* Old browsers */
+	background: -moz-linear-gradient(top,  #F3F3F3 0%, #D3D3D3 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F3F3F3), color-stop(100%,#D3D3D3)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #F3F3F3 0%,#D3D3D3 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #F3F3F3 0%,#D3D3D3 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #F3F3F3 0%,#D3D3D3 100%); /* IE10+ */
+	background: linear-gradient(top,  #F3F3F3 0%,#D3D3D3 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F3F3F3', endColorstr='#D3D3D3',GradientType=0 ); /* IE6-9 */
+}
+
+.bgColorgray{
+	background: #F3F3F3; /* Old browsers */
+	background: -moz-linear-gradient(top,  #F3F3F3 0%, #D3D3D3 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F3F3F3), color-stop(100%,#D3D3D3)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #F3F3F3 0%,#D3D3D3 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #F3F3F3 0%,#D3D3D3 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #F3F3F3 0%,#D3D3D3 100%); /* IE10+ */
+	background: linear-gradient(top,  #F3F3F3 0%,#D3D3D3 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F3F3F3', endColorstr='#D3D3D3',GradientType=0 ); /* IE6-9 */
+}
+.textbox{
+	width:40px;
+}

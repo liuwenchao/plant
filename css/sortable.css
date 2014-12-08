@@ -1,0 +1,29 @@
+#sortable { 
+list-style-type: none; 
+margin: 0; padding: 0; 
+width: 90%; }
+
+#sortable li { 
+margin: 0 3px 3px 3px; 
+padding: 0.6em; 
+padding-left: 1.8em; 
+color: white;
+font-weight: bold;
+height: 18px;
+cursor:pointer;
+border-radius:2px;
+	
+	background: #689C04;
+	background: -moz-linear-gradient(top,  #9BCF37 0%, #689C04 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9BCF37), color-stop(100%,#689C04)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #9BCF37 0%,#689C04 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #9BCF37 0%,#689C04 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #9BCF37 0%,#689C04 100%); /* IE10+ */
+	background: linear-gradient(top,  #9BCF37 0%,#689C04 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9BCF37', endColorstr='#689C04',GradientType=0 ); /* IE6-9 */
+}
+
+
+#sortable li span { 
+position: absolute; 
+margin-left: -1.3em; }

@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plant lighting control system - System</title>
+<link rel="stylesheet" href="./css/themes/base/jquery.ui.all.css">
+<link rel="stylesheet" href="./css/bootstrap.min.css" />
+<script type="text/javascript" src="./js/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="./js/mboat.js"></script>
+<script type="text/javascript" src="./js/system.js"></script>
+<script type="text/javascript" src="./js/jquery.jqpagination.js"></script>
+<script type="text/javascript" src="./js/ui/jquery.ui.core.js"></script>
+<script type="text/javascript" src="./js/ui/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="./js/ui/jquery.ui.mouse.js"></script>
+<script type="text/javascript" src="./js/ui/jquery.ui.dialog.js"></script>
+<script type="text/javascript" src="./js/ui/jquery.ui.draggable.js"></script>
+<script type="text/javascript" src="./js/ui/jquery.ui.position.js"></script>
+<script type="text/javascript" src="./js/ui/jquery.ui.button.js"></script>
+<script type="text/javascript" src="./js/ui/jquery.ui.datepicker.js"></script>
+<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){ 
+  initSubMenu();
+  initComp();
+  getServerName();
+  getSysDate();
+  getsendSetting();
+  
+}); 
+
+
+</script>
+</head>
+<body>
+<div id="plant_container">
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="" href="#">
+        <img alt="Plant lighting control system" style="height:50px;" src="./img/logo.gif">
+      </a>
+      </div>
+      <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+          Settings 
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="node.html">Node setting</a></li>
+          <li><a href="area.html">Area setting</a></li>
+          <li><a href="model.html">Model setting</a></li>
+          <li><a href="logQuery.html">Log query</a></li>
+          <li><a href="reproduction.html">Demo model</a></li>
+          <li><a href="system.html">System</a></li>
+        </ul>
+        </li>
+        <li><a href="manu.html">Manual</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="index.html">Tasks</a></li>
+        <li><a href="#" class="btn btn-link" onclick="aboutMe();">About</a></li>
+        <li><button type="button" class="btn btn-default navbar-btn" onclick="logout();">Quit</button></li>
+      </ul>
+      <form class="navbar-form navbar-left">
+        <a id="lblServerName" class="btn btn-link text-muted" title="Click to change" onclick="modiServerName()">
+        Server ID
+        </a>
+        <input id="serverName" class="form-control" type="text" value="Server ID" style="display:none" onblur="saveServerName();"/>
+      </form>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="container well">
+    <div class="page-header">
+      <h1>System Setting</h1>
+    </div>
+    <div class="row">
+      <div id="ResendSettingDialog" class="col-sm-5">
+        <h3>Command transmission</h3>
+        <div class="form-group">
+          <label for="inputEmail3" class="control-label">Transmission times:</label>
+          <div class="">
+            <select id="resendTimes" class="form-control">
+              <option value="1" selected="selected">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+            <span class="help-block"><em>Transmission times:</em> Command wiil be re-send to nodes if this value is more than 1.(Our recommend is 1)</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <input id='chk_broadcast' type='checkbox' />
+          <label for="chk_broadcast">Broadcast Transmission</label>
+          <span class="help-block"><em>Broadcast:</em> When all nodes are in same area, we recommend to check this.</span>
+        </div>
+        <div class="form-group">
+          <input id='sendConfirm' type='checkbox' />
+          <label for="sendConfirm">Transmission result auto confirm</label>
+          <span class="help-block"><b>Transmission result:</b> To confirm the Transmission is failed or not , if failed the system will try again.(Not recommend).</span>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary col-sm-12" onClick="sendConfirmed();">OK</button>
+        </div>
+      </div>
+
+      <div id="databasePad" class="col-sm-5 col-sm-offset-1">
+        <h3>System operation</h3>
+        <div class="form-group">
+          <label class="control-label">DataBase export:</label>
+          <div class="form-static-control">
+            <a href="plant.db" class="btn btn-default">Export</a>
+            <span class="help-block">
+              <b>DataBase export:</b> To backup current database.
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Update system from internet:</label>
+          <div class="form-static-control">
+            <button onclick="sysUpdate();" class="btn btn-default">Update</button>
+            <span class="help-block">
+              <b>Update system:</b> If the internet is not connected,please put file  update.tar.gz to server's /plant via FTP manual,then click "Update".
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label">
+            Current Time:
+            <span id="localTime" style="color:green;"></span>
+          </label>
+          <div class="form-static-control">
+            <button class="btn btn-default" onclick="setSysDateByLocal();">Correct server time</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label">
+            Server time：
+          </label>
+          <div class="form-static-control">
+            <input type="text" id="startDatepicker" style="width:80px;"  />
+            <input type="text" id="dt_hour" class="min_text" maxlength="2" style="width:30px;">:<input type="text" id="dt_min" class="min_text" maxlength="2" style="width:30px;">
+            <button class="btn btn-default" onclick="setSysDate();">Correct it</button>
+            <span class="help-block">
+              <b>System Time:</b> Correct server time.
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary col-sm-12" onClick="rebootServer();">Reboot</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+<div id="WaitingDialog" title="Please Wait" style="background:white; color:#000;" align="center">
+<img src="img/wait.gif" width="50" height="50" /><br /><br />
+Running,please wait... 
+</div>

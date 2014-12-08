@@ -1,0 +1,89 @@
+
+
+#plant_left_pan {
+	float: left;
+	width: 230px;
+	margin-top:10px;
+}
+
+.plant_leftmenu {
+	float: left;
+	width: 215px;
+	height:540px;
+	margin-top: 0px;
+	margin-left:10px;
+	overflow:hide;
+	background-color: #E6E6E6;
+	border-bottom-left-radius: 4px/*{cornerRadius}*/;
+	border-bottom-right-radius: 4px/*{cornerRadius}*/;
+}
+
+
+
+#plant_right_pan {
+	float: right;
+	width: 670px;
+	background: url(../img/plant_right_bg.png) repeat-y;
+}
+
+#plant_right_mid {
+	float: left;
+	width: 665px;
+	background: #fff;
+	color: #666666;
+	text-align: justify;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	border:#393 solid thin;
+	border-radius:4px;
+}
+
+
+.listTitle {
+	float: left;
+	width: 175px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	height: 30px;
+	background: url(../img/plant_h3.png) no-repeat;
+	margin-left: 10px;
+	padding-top: 10px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 40px;
+}
+ .tableContent{
+	width:95%;
+	height:530px;
+	margin:auto;
+	color: #000;
+}
+
+
+/* 按钮clean gray
+*******************************************************************************/
+.buttonBlue {
+	display: block;
+	position: relative;
+	padding: 5px;
+	color: #fff;
+	cursor: pointer;
+	background: #7fb813;
+	width: 90px;
+	height:35px;
+	border: thin solid #666;
+	font-size: 12px;
+	font-weight: bold;
+}
+.buttonBlue:hover { background-color: #4b9103; }
+.buttonBlue:disabled{
+	background-color:#CCC;
+}
+
+.buttonBlue[class] {  background-image: url(../img/shade.png); background-position: bottom; }
+
+
+#percentRed , #percentBlue, .ui-slider-range { background:gray; }
