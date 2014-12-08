@@ -1,0 +1,54 @@
+Memo: 32 char
+
+Node:
+Add Node-Motor dropdown
+
+
+Area:
+name: 32
+memo: 32
+REMOVE PPFD.
+Add motor nodes + Add LED nodes.
+
+Model:
+Rename Model to Mode
+PPF-RED
+remove m2
+rename ppd-red ppd-blue ppd-uv to ppd-1, ppd-2,ppd-3, ppd-4.
+if possible, add rename box.
+remove notes.
+remove slider bars.
+remove FREQ
+remove Duty cycle,
+remove whitel light.
+remove global ppd fields.
+
+LogQuery:
+user login/logout
+add user info with log records. (can be in 2nd stage).
+
+
+Demo: (can be in 2nd stage)
+same as model page.
+keep Time span.
+
+System:
+add import (can be 2nd stage).
+add customized time server if possible.
+add job to correct time server every serverl minutes.
+Alert message to email address, save in db and provide a page.(can be in 2nd stage.)
+resume process after power is back on. (can be in 2nd stage, UI Need to have a choice to configure.)
+Work to do after power failure:[TODO]
+1. resume
+2. skip
+
+User:
+Add user
+Edit password
+
+Manual: (same ad model page)
+Select
+Mode Name:
+
+Add motor setting:
+Area/Node/Motor/Mode settings
