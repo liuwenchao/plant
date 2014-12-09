@@ -4,31 +4,30 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Plant lighting control system - Node</title>
+<title>Plant lighting control system - Model</title>
 <link rel="stylesheet" href="./css/themes/base/jquery.ui.all.css">
 <link rel="stylesheet" href="./css/bootstrap.min.css" />
 <script src="./js/jquery-1.9.1.js"></script>
 <script src="./js/mboat.js"></script>
-<script src="./js/node.js"></script>
+<script src="./js/model.js"></script>
 <script src="./js/ui/jquery.ui.core.js"></script>
 <script src="./js/ui/jquery.ui.widget.js"></script>
 <script src="./js/ui/jquery.ui.mouse.js"></script>
-<script src="./js/ui/jquery.ui.dialog.js"></script>
-<script src="./js/ui/jquery.ui.draggable.js"></script>
-<script src="./js/ui/jquery.ui.position.js"></script>
-<script src="./js/ui/jquery.ui.button.js"></script>
-<script src="./js/bootstrap.min.js"></script>
-<script type = "text/javascript">
-var currentPage = 1;
-$(document).ready(function(){ 
+<script src="./js/ui/jquery.ui.slider.js"></script>
+<script type="text/javascript" src="./js/bootstrap.min.js"></script>
 
-		initSubMenu();
-	//	initPagination();
-		getServerName();
-		initComp();
-		getNodeList(1);
-		getAreaList();
-		
+<script type = "text/javascript">
+var photoRED = 0;//光量子——红
+var photoBLUE = 0;//光量子-蓝
+
+$(document).ready(function(){ 
+  $(function() {
+    initSubMenu();
+    getPhoto_KrKb();
+    getModelList();
+    initSlider();
+    getServerName();
+  });
 }); 
 
 </script>
@@ -59,11 +58,11 @@ $(document).ready(function(){
           <li><a href="area.html">Area setting</a></li>
           <li><a href="node.html">Node setting</a></li>
           <li><a href="motor.html">Motor setting</a></li>
-          <li><a href="mode.html">Mode setting</a></li>          
-          <li><a href="logQuery.html">Log query</a></li>
-          <li><a href="reproduction.html">Demo modes</a></li>
-          <li><a href="system.html">System setting</a></li>
-          <li><a href="user.html">User setting</a></li>
+                        <li><a href="mode.html">Mode setting</a></li>
+              <li><a href="reproduction.html">Demo modes</a></li>
+              <li><a href="system.html">System setting</a></li>
+              <li><a href="user.html">User setting</a></li>
+
         </ul>
         </li>
         <li><a href="manu.html">Manual</a></li>
@@ -81,72 +80,59 @@ $(document).ready(function(){
       </div>
     </div>
   </nav>
-
+  
   <div class="container">
     <div class="row">
       <div class="col-sm-3" id="plant_left_column">
-  		  <h3>Nodes List</h3>
-    		<div class="plant_leftmenu">
-    			<div style="padding-left:20px;">
-  					<input id="selectAll" type="checkbox" onchange="selectAllNode(this);" />
-  					<label for='selectAll'>Select/Deselect all</label>
-  				</div>
-  				<div id="NODELIST" class="nodeList">
-    			</div>
-    		</div>
-    	</div>
-    	<div class="col-sm-9 well form-horizontal" id="plant_right_column">
-    	  <input id="nodeId"  type="hidden"  value="-1" />
-  		  <div class="form-group">
-          <label for="inputEmail3" class="col-sm-2 control-label">Node MAC:</label>
+        <h3>Mode List</h3>
+        <div id="MODELLIST"></div>
+      </div>
+      <div class="col-sm-9 well form-horizontal" id="plant_right_column">
+        <input id="modelId" name="modelId" type="hidden" value="-1"/>
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">Mode name:</label>
           <div class="col-sm-10">
-            <input name="nodeMac" type="text" id="nodeMac" maxlength="8" class="form-control" style="text-transform: uppercase;" placeholder="Example: FFFFFFFF">
+            <input type="text" name="modelName" id="modelName" class="form-control" placeholder="Mode Name">
           </div>
         </div>
         <div class="form-group">
-          <label for="inputEmail3" class="col-sm-2 control-label">Name:</label>
+          <label for="inputEmail3" class="col-sm-2 control-label">PPF-1 (μmol/s):</label>
           <div class="col-sm-10">
-            <input type="text" id="memo"  class="form-control">
+            <input name="PPF1" type="text" maxlength="3" class="form-control" value="0" />
+            <input name="PPF1_name" type="text" class="form-control" placeholder="Alias" />
           </div>
         </div>
         <div class="form-group">
-          <label for="inputEmail3" class="col-sm-2 control-label">Node-Area:</label>
+          <label for="inputEmail3" class="col-sm-2 control-label">PPF-2 (μmol/s):</label>
           <div class="col-sm-10">
-  						<select id="nodeArea" class="form-control">
-  							<option value="0">Please select</option>
-  						</select>
+            <input name="PPF2" type="text" maxlength="3" class="form-control" value="0" />
+            <input name="PPF2_name" type="text" class="form-control" placeholder="Alias" />
           </div>
         </div>
         <div class="form-group">
-          <label for="inputEmail3" class="col-sm-2 control-label">Node-Motor:</label>
+          <label for="inputEmail3" class="col-sm-2 control-label">PPF-3 (μmol/s):</label>
           <div class="col-sm-10">
-  						<select id="nodeMotor" class="form-control">
-  							<option value="0">Please select</option>
-  						</select>
+            <input name="PPF3" type="text" maxlength="3" class="form-control" value="0" />
+            <input name="PPF3_name" type="text" class="form-control" placeholder="Alias" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">PPF-4 (μmol/s):</label>
+          <div class="col-sm-10">
+            <input name="PPF4" type="text" maxlength="3" class="form-control" value="0" />
+            <input name="PPF4_name" type="text" class="form-control" placeholder="Alias" />
           </div>
         </div>
         <div class="form-group">
           <div class=" col-sm-offset-2">
-            <button class="btn btn-default" onClick="autoSearch();">Auto-Search</button>
-            <button class="btn btn-default" onClick="newNode();">New node</button>
-            <button class="btn btn-default" onClick="saveNode(this);">Save node</button>
-            <button class="btn btn-default" onClick="deleteNode();">Delete node</button>
+            <button class="btn btn-default" onClick="newModel();">New mode</button>
+            <button class="btn btn-default" onClick="saveModel(this);">Save mode</button>
+            <button class="btn btn-default" onClick="deleteModel();">Delete mode</button>
           </div>
         </div>
-  		</div>
-  	</div>
-	</div>
+      </div>
+    </div>
+  </div>
 </div>
-
 </body>
-<div id="AutoSearchDialog" title="Auto Search" style="background:white; color:#000;" align="center">
-<img src="img/wait.gif" width="50" height="50" /><br /><br />
-Searching,please wait... 
-</div>
-<div id="AutoSearchMode" title="Auto Search">
-<p></p>
-<input type="checkbox" id="isResetCOO"/>
-<label for="isResetCOO">Delete all nodes before this search</label>
-</div>
-
 </html>

@@ -56,12 +56,14 @@ $(document).ready(function(){
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="node.html">Node setting</a></li>
               <li><a href="area.html">Area setting</a></li>
-              <li><a href="model.html">Model setting</a></li>
+              <li><a href="node.html">Node setting</a></li>
+              <li><a href="motor.html">Motor setting</a></li>
+              <li><a href="mode.html">Mode setting</a></li>
               <li><a href="logQuery.html">Log query</a></li>
-              <li><a href="reproduction.html">Demo model</a></li>
-              <li><a href="system.html">System</a></li>
+              <li><a href="reproduction.html">Demo modes</a></li>
+              <li><a href="system.html">System setting</a></li>
+              <li><a href="user.html">User setting</a></li>
             </ul>
           </li>
           <li><a href="manu.html">Manual</a></li>
@@ -91,39 +93,21 @@ $(document).ready(function(){
         <div class="form-group">
           <label for="inputEmail3" class="col-sm-2 control-label">Area name:</label>
           <div class="col-sm-10">
-            <input type="text" name="areaName" id="areaName" maxlength="6" class="form-control" placeholder="maxlength: 6"/>
+            <input type="text" name="areaName" id="areaName" class="form-control" placeholder="Area Name"/>
           </div>
         </div>
         <div class="form-group">
           <label for="inputEmail3" class="col-sm-2 control-label">Memo:</label>
           <div class="col-sm-10">
-            <input type="text" name="memo" id="memo" maxlength="6" class="form-control" placeholder="maxlength: 6" />
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="inputEmail3" class="col-sm-2 control-label">PPFD-RED:</label>
-          <div class="col-sm-10">
-            <input type="text" name="photonRed" id="photonRed" value="50" style=" width:50px; background-color:red;color:white;" onblur="PPFD_modi(0,this);"placeholder="50"/>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="inputEmail3" class="col-sm-2 control-label">PPFD-BLUE:</label>
-          <div class="col-sm-10">
-            <input type="text" name="photonBlue" id="photonBlue" value="14" style="width:50px; background-color: #09C;color:white;" onblur="PPFD_modi(1,this);" placeholder="14"/>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="inputEmail3" class="col-sm-2 control-label">PPFD-UV:</label>
-          <div class="col-sm-10">
-            <input type="text" name="photonBlue" id="photonUV" value="14" style="width:50px; background-color: violet;color:white;" onblur="PPFD_modi(2,this);" placeholder="14" />
-           <span id="helpBlock" class="help-block">Notes：These values are real PPFD which are measured from this area.</span>
+            <input type="text" name="memo" id="memo" class="form-control" placeholder="Memo" />
           </div>
         </div>
         <div class="form-group">
           <div class=" col-sm-offset-2">
             <button class="btn btn-default" onClick="newArea();">New area</button>
             <button class="btn btn-default" onClick="saveArea(this);">Save area</button>
-            <button class="btn btn-default" onClick="addAreaNode();">Add nodes</button>
+            <button class="btn btn-default" onClick="addAreaNode();">Add LED nodes</button>
+            <button class="btn btn-default" onClick="addMotorNode();">Add Motor nodes</button>
           </div>
         </div>
         <div class="form-group">
