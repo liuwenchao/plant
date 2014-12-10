@@ -52,20 +52,21 @@ $(document).ready(function(){
       <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-          Settings 
-          <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="area.html">Area setting</a></li>
-          <li><a href="node.html">Node setting</a></li>
-          <li><a href="motor.html">Motor setting</a></li>
-                        <li><a href="mode.html">Mode setting</a></li>
-              <li><a href="reproduction.html">Demo modes</a></li>
-              <li><a href="system.html">System setting</a></li>
-              <li><a href="user.html">User setting</a></li>
-
-        </ul>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            Settings 
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="area.html">Area setting</a></li>
+            <li><a href="node.html">LED setting</a></li>
+            <li><a href="motor.html">Motor setting</a></li>
+            <li><a href="mode.html">Mode setting</a></li>
+            <li><a href="reproduction.html">Demo modes</a></li>
+            <li><a href="calibration.html">Calibration</a></li>
+            <li><a href="logQuery.html">Log query</a></li>
+            <li><a href="system.html">System setting</a></li>
+            <li><a href="user.html">User setting</a></li>
+          </ul>
         </li>
         <li><a href="manu.html">Manual</a></li>
         <li><a href="schedule.html">Schedule</a></li>
@@ -89,111 +90,121 @@ $(document).ready(function(){
     </div>
     <div class="row">
       <div id="ResendSettingDialog" class="col-sm-5">
-        <h3>Command transmission</h3>
-        <div class="form-group">
-          <label for="inputEmail3" class="control-label">Transmission times:</label>
-          <div class="">
-            <select id="resendTimes" class="form-control">
-              <option value="1" selected="selected">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </select>
-            <span class="help-block"><em>Transmission times:</em> Command wiil be re-send to nodes if this value is more than 1.(Our recommend is 1)</span>
-          </div>
-        </div>
-        <div class="form-group">
-          <input id='chk_broadcast' type='checkbox' />
-          <label for="chk_broadcast">Broadcast Transmission</label>
-          <span class="help-block"><em>Broadcast:</em> When all nodes are in same area, we recommend to check this.</span>
-        </div>
-        <div class="form-group">
-          <input id='sendConfirm' type='checkbox' />
-          <label for="sendConfirm">Transmission result auto confirm</label>
-          <span class="help-block"><em>Transmission result:</em> To confirm the Transmission is failed or not , if failed the system will try again.(Not recommend).</span>
-        </div>
-        <div class="form-group">
-          <button class="btn btn-primary col-sm-12" onClick="sendConfirmed();">OK</button>
-        </div>
+        <form class="form" role="form">
+          <fieldset>
+            <legend>Command transmission</legend>
+            <div class="form-group">
+              <label for="inputEmail3" class="control-label">Transmission times:</label>
+              <div class="">
+                <select id="resendTimes" class="form-control">
+                  <option value="1" selected="selected">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+                <span class="help-block"><em>Transmission times:</em> Command wiil be re-send to nodes if this value is more than 1.(Our recommend is 1)</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <input id='chk_broadcast' type='checkbox' />
+              <label for="chk_broadcast">Broadcast Transmission</label>
+              <span class="help-block"><em>Broadcast:</em> When all nodes are in same area, we recommend to check this.</span>
+            </div>
+            <div class="form-group">
+              <input id='sendConfirm' type='checkbox' />
+              <label for="sendConfirm">Transmission result auto confirm</label>
+              <span class="help-block"><em>Transmission result:</em> To confirm the Transmission is failed or not , if failed the system will try again.(Not recommend).</span>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary col-sm-12" onClick="sendConfirmed();">OK</button>
+            </div>
+          </fieldset>
+        </form>
       </div>
 
       <div id="databasePad" class="col-sm-5 col-sm-offset-1">
-        <h3>System operation</h3>
-        <div class="form-group">
-          <label class="control-label">DataBase export:</label>
-          <div class="form-static-control">
-            <a href="plant.db" class="btn btn-primary">Export</a>
-            <span class="help-block">
-              <em>DataBase export:</em> To backup current database.
-            </span>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label">DataBase import:</label>
-          <div class="row">
-            <div class="col-sm-8">
-              <input type="file" name="import_file" class="form-control" />
+        <form class="form" role="form">
+          <fieldset>
+            <legend>DataBase export:</legend>
+            <div class="form-group">
+              <div class="form-static-control">
+                <a href="plant.db" class="btn btn-primary">Export</a>
+                <span class="help-block">
+                  <em>DataBase export:</em> To backup current database.
+                </span>
+              </div>
             </div>
-            <div class="col-sm-4">
-              <button class="btn btn-primary">Import</button>
+          </fieldset>
+        </form>
+        
+        <form class="form" role="form">
+          <fieldset>
+            <legend>DataBase import:</legend>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-8">
+                  <input type="file" name="import_file" class="form-control" />
+                </div>
+                <div class="col-sm-4">
+                  <button class="btn btn-primary">Import</button>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label">Update system from internet:</label>
-          <div class="form-static-control">
-            <button onclick="sysUpdate();" class="btn btn-primary">Update</button>
-            <span class="help-block">
-              <em>Update system:</em> If the internet is not connected,please put file  update.tar.gz to server's /plant via FTP manual,then click "Update".
-            </span>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label">
-            Server time：
-          </label>
-          <div class="form-stati-control">
-            <button class="btn btn-primary" onclick="setSysDateByLocal();">
-              Set server time as: 
-              <span id="localTime"></span>
-            </button>
-          </div>
-          <div>Or:</div>
-          <div class="form-static-control">
-            <input type="text" id="startDatepicker" style="width:80px;"  />
-            <input type="text" id="dt_hour" class="min_text" maxlength="2" style="width:30px;">:<input type="text" id="dt_min" class="min_text" maxlength="2" style="width:30px;">
-            <button class="btn btn-primary" onclick="setSysDate();">Save</button>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label">Send alert messages to:</label>
-          <div class="row">
-            <div class="col-sm-8">
-              <input type="email" class="form-control" name="alert_to" placeholder="a@b.c"/>
+          </fieldset>
+        </form>
+        
+        <form class="form" role="form">
+          <fieldset>
+            <legend>Update system from internet:</legend>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-8">
+                  <input tyoe="url" placeholder="http://server.com/update" class="form-control" />
+                </div>
+                <div class="col-sm-4">
+                  <button onclick="sysUpdate();" class="btn btn-primary">Update</button>
+                </div>
+              </div>
+              <span class="help-block">
+                <em>Update system:</em> If the internet is not connected,please put file  update.tar.gz to server's /plant via FTP manual,then click "Update".
+              </span>
             </div>
-            <div class="col-sm-4">
-              <button class="btn btn-primary">Save</button>
+          </fieldset>
+        </form>
+        
+        <form class="form" role="form">
+          <fieldset>
+            <legend>Send alert messages to:</legend>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-8">
+                  <input type="email" class="form-control" name="alert_to" placeholder="a@b.c"/>
+                </div>
+                <div class="col-sm-4">
+                  <button class="btn btn-primary">Save</button>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label">Update system from internet:</label>
-          <div class="form-static-control">
-            <button onclick="sysUpdate();" class="btn btn-primary">Update</button>
-            <span class="help-block">
-              <em>Update system:</em> If the internet is not connected,please put file  update.tar.gz to server's /plant via FTP manual,then click "Update".
-            </span>
-          </div>
-        </div>
-        <div class="form-group">
-          <button class="btn btn-warning col-sm-12" onClick="rebootServer();">Reboot</button>
-        </div>
+          </fieldset>
+        </form>
+            
+        <form class="form" role="form">
+          <fieldset>
+            <div class="form-group">
+              <button class="btn btn-warning col-sm-12" onClick="rebootServer();">Reboot</button>
+              <div class="text-info">
+                Server time：<span id="localTime"></span>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+
       </div>
     </div>
   </div>

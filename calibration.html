@@ -52,12 +52,11 @@ $(document).ready(function(){
             <li><a href="mode.html">Mode setting</a></li>
             <li><a href="reproduction.html">Demo modes</a></li>
             <li><a href="calibration.html">Calibration</a></li>
-            <li><a href="logQuery.html">Log query</a></li>
             <li><a href="system.html">System setting</a></li>
             <li><a href="user.html">User setting</a></li>
           </ul>
         </li>
-        <li><a href="manu.html">Manual</a></li>
+        <li><a href="manu.html">Manual Control</a></li>
         <li><a href="schedule.html">Schedule</a></li>
         <li><a href="index.html">Tasks</a></li>
         <li><a href="#" class="btn btn-link" onclick="aboutMe();">About</a></li>
@@ -76,84 +75,71 @@ $(document).ready(function(){
   <div class="container">
     <div class="row">
       <div class="col-sm-3" id="plant_left_column">
-        <h3>Area List</h3>
-        <div>
-          <input id="selectAll" type="checkbox" onchange="selectAllArea(this);" />
-          <label for='selectAll'>Select/Deselect all</label>
-        </div>
-        <div id="AREALIST"></div>
+        <h3>LED Node List</h3>
+        <div id="NODELIST"></div>
       </div>
       <div class="col-sm-9 well">
         <div class="page-header">
-          <h1>Manual Control</h1>
+          <h1>Calibration</h1>
         </div>
-        
         <form class="form" role="form">
           <fieldset>
-            <legend>LED</legend>
-            <table class="table table-bordered">
-              <tr bgcolor="#86c111">
-                <th width="60">Select</th>
-                <th width="100">Model Name</th>
-                <th width="90">Channel 1</th>
-                <th width="90">Channel 2</th>
-                <th width="90">Channel 3</th>
-                <th width="90">Channel 4</th>
-              </tr>
-            </table>
-            <div id="MODELLIST" class="col-sm-12">
-            </div>
-            <div id="monitorMsg" class="col-sm-12">
-            </div>
-            <div class="form-group">
-              <button class="btn btn-primary" onClick="openModel();">Start manual</button>
-              <button class="btn btn-default" onClick="watchModel();">Watch Model</button>
-              <button class="btn btn-default" onClick="closeAll();">Close all</button>
-              <button class="btn btn-default" onClick="startReproduction();">Demo</button>
-              <button class="btn btn-default" onClick="stopReproduction();">Demo end</button>
-            </div>
-          </fieldset>
-        </form>
-        
-        <form class="form" role="form">
-          <fieldset>
-            <legend>Motor</legend>
             <div class="form-group row">
-              <label class="col-sm-2 control-label">Motor mode:</label>
+              <label for="inputEmail3" class="col-sm-2 control-label">Channel:</label>
               <div class="col-sm-10">
-                <select class="form-control" name="mode">
-                  <option value="0">Stop</option>
-                  <option value="1">Back And Forward</option>
-                  <option value="2">Goto To End</option>
-                  <option value="3">Move</option>
+                <select class="form-control" name="nodelist">
+                  <option value="0">Channel 1</option>
+                  <option value="1">Channel 2</option>
+                  <option value="2">Channel 3</option>
+                  <option value="3">Channel 4</option>
                 </select>
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-sm-2 control-label">Direction:</label>
+              <label for="inputEmail3" class="col-sm-2 control-label">LED Select:</label>
               <div class="col-sm-10">
-                <select class="form-control" name="direction">
-                  <option value="0">Forward</option>
-                  <option value="1">Reverse</option>
-                </select>
+                <div class="row">
+                    <label class="col-sm-3"><input type="checkbox" name="led0"/>LED1</label>
+                    <label class="col-sm-3"><input type="checkbox" name="led1"/>LED3</label>
+                    <label class="col-sm-3"><input type="checkbox" name="led2"/>LED3</label>
+                    <label class="col-sm-3"><input type="checkbox" name="led3"/>LED4</label>
+                    <label class="col-sm-3"><input type="checkbox" name="led4"/>LED5</label>
+                    <label class="col-sm-3"><input type="checkbox" name="led5"/>LED6</label>
+                    <label class="col-sm-3"><input type="checkbox" name="led6"/>LED7</label>
+                    <label class="col-sm-3"><input type="checkbox" name="led7"/>LED8</label>
+                    <label class="col-sm-3"><input type="checkbox" name="led8"/>LED9</label>
+                    <label class="col-sm-3"><input type="checkbox" name="led9"/>LED10</label>
+                    <label class="col-sm-3"><input type="checkbox" name="led10"/>LED11</label>
+                    <label class="col-sm-3"><input type="checkbox" name="led11"/>LED12</label>
+                    <label class="col-sm-3"><input type="checkbox" name="led12"/>LED13</label>
+                    <label class="col-sm-3"><input type="checkbox" name="led13"/>LED14</label>
+                    <label class="col-sm-3"><input type="checkbox" name="led14"/>LED15</label>
+                    <label class="col-sm-3"><input type="checkbox" name="led15"/>LED16</label>
+                </div>
               </div>
             </div>
+
             <div class="form-group row">
-              <label class="col-sm-2 control-label">Speed: (mm/sec)</label>
+              <label for="inputEmail3" class="col-sm-2 control-label">LED PWM %</label>
               <div class="col-sm-10">
-                <input type="number" id="memo"  class="form-control" placeholder="Max Speed: (mm/sec)">
+                <input type="number" class="form-control" placeholder="50">
               </div>
             </div>
+
             <div class="form-group row">
-              <label class="col-sm-2 control-label">Distance: (mm)</label>
+              <label for="inputEmail3" class="col-sm-2 control-label">LED Current (mA)</label>
               <div class="col-sm-10">
-                <input type="number" id="memo"  class="form-control" placeholder="Max length: (mm)">
+                <input type="number" class="form-control" placeholder="0">
               </div>
-            </div>
-            <div class="form-group">
-              <button class="btn btn-primary">Send</button>
             </div>
           </fieldset>
+          <div class="form-group row">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button class="btn btn-primary" onClick="">Send</button>
+              <button class="btn btn-default" onClick="">Save</button>
+              <button class="btn btn-default" onClick="">Turn off all LED</button>
+            </div>
+          </div>
         </form>
       </div>
     </div>
