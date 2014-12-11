@@ -131,7 +131,6 @@ function dealLogOut(data){
 }
 
 function aboutMe(){
-	closeMe();
 	var model = [
 		'<div class="modal" tabindex="-1" role="dialog" aria-labelledby="About" aria-hidden="true"><div class="modal-dialog modal-sm"><div class="modal-content">',
     '<div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><h4 class="modal-title">Plant lighting control system</h4></div>',
@@ -144,9 +143,6 @@ function aboutMe(){
 }
 
 function closeMe(){
-	var winOpen = $("#ABOUTWIN");
-	winOpen.fadeOut();
-	winOpen.remove();
 }
 
 
