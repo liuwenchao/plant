@@ -130,30 +130,17 @@ function dealLogOut(data){
 	 });
 }
 
-function aboutMe(){ 
+function aboutMe(){
 	closeMe();
-	var winOpen = $("<div id='ABOUTWIN' class='aboutPage'></div>");
-	var tbl = $("<table width='80%' border='0' cellspacing='3' cellpadding='3'></table>");
-	var trn = $("<tr><td colspan='2' align='center'><img src='img/logo.jpg' width='322' height='85' /></td></tr>");
-	tbl.append(trn);
-	trn = $("<tr><td colspan='2'>Plant lighting control system System</td></tr>");
-	tbl.append(trn);
-	trn = $("<tr><td width='40%'>Version:</td><td style='text-align:left'>plant 2.0.1.216</td></tr>");
-	tbl.append(trn);
-	trn = $("<tr><td>CopyRight:</td><td  style='text-align:left'>&copy; 2014 M-boat.com.cn</td></tr>");
-	tbl.append(trn);
-	trn = $("<tr><td colspan='2' align='center'><b>HangZhou Mboat Inc.</b></td></tr>");
-	tbl.append(trn);
-	trn = $("<tr><td>&nbsp;</td><td ><input name='colse' type='button' onclick='closeMe();' value='Close' /></td></tr>");
-	tbl.append(trn);
-	winOpen.append(tbl);
-	$("#plant_container").append(winOpen);
-  
-var x = ($(window).width()-400)/2;//使用$(window).width()获得显示器的宽，并算出对应的Div离左边的距离  
-var y = ($(window).height()-400)/2;//使用$(window).height()获得显示器的高，并算出相应的Div离上边的距离  
-winOpen.css("top",y).css("left",x);  
-
-	winOpen.fadeIn();
+	var model = [
+		'<div class="modal" tabindex="-1" role="dialog" aria-labelledby="About" aria-hidden="true"><div class="modal-dialog modal-sm"><div class="modal-content">',
+    '<div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><h4 class="modal-title">Plant lighting control system</h4></div>',
+    '<div class="modal-body"><dl><dt>Version:</dt><dd>2.0.1.216</dd><dt>CopyRight:</dt><dd>Biolumic Inc. <a href="http://www.biolumic.com" target="_blank">http://www.biolumic.com</a></dd></dl></div>',
+    '<div class="modal-footer"><button type="button" class="btn btn-primary" data-dismiss="modal">Close</button></div>',
+    '</div></div></div>'
+  ];
+    
+  $(model.join('')).modal('show');
 }
 
 function closeMe(){
